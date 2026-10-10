@@ -1,0 +1,53 @@
+#ifndef STM32_REGS_H
+#define STM32_REGS_H
+
+#include <stdint.h>
+
+#define REG32(address) (*(volatile uint32_t *)(address))
+
+/* Reset and clock control */
+#define RCC_AHB1ENR    REG32(0x40023830UL)
+#define RCC_APB1ENR    REG32(0x40023840UL)
+#define RCC_APB1RSTR   REG32(0x40023820UL)
+
+/* GPIOD: PD8 = USART3 TX, PD9 = USART3 RX */
+#define GPIOD_MODER    REG32(0x40020C00UL)
+#define GPIOD_OTYPER   REG32(0x40020C04UL)
+#define GPIOD_OSPEEDR  REG32(0x40020C08UL)
+#define GPIOD_PUPDR    REG32(0x40020C0CUL)
+#define GPIOD_AFRH     REG32(0x40020C24UL)
+
+/* USART3 */
+#define USART3_SR      REG32(0x40004800UL)
+#define USART3_DR      REG32(0x40004804UL)
+#define USART3_BRR     REG32(0x40004808UL)
+#define USART3_CR1     REG32(0x4000480CUL)
+#define USART3_CR2     REG32(0x40004810UL)
+#define USART3_CR3     REG32(0x40004814UL)
+
+/* DMA1 interrupt status and flag clearing */
+#define DMA1_LISR      REG32(0x40026000UL)
+#define DMA1_LIFCR     REG32(0x40026008UL)
+
+/* DMA1 Stream 1: USART3 receive */
+#define DMA1_S1CR      REG32(0x40026028UL)
+#define DMA1_S1NDTR    REG32(0x4002602CUL)
+#define DMA1_S1PAR     REG32(0x40026030UL)
+#define DMA1_S1M0AR    REG32(0x40026034UL)
+#define DMA1_S1FCR     REG32(0x4002603CUL)
+
+/* DMA1 Stream 3: USART3 transmit */
+#define DMA1_S3CR      REG32(0x40026058UL)
+#define DMA1_S3NDTR    REG32(0x4002605CUL)
+#define DMA1_S3PAR     REG32(0x40026060UL)
+#define DMA1_S3M0AR    REG32(0x40026064UL)
+#define DMA1_S3FCR     REG32(0x4002606CUL)
+
+/* Interrupt controller */
+#define NVIC_ISER0     REG32(0xE000E100UL)
+#define NVIC_ISER1     REG32(0xE000E104UL)
+
+/* System control */
+#define SCB_VTOR       REG32(0xE000ED08UL)
+
+#endif
